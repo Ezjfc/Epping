@@ -1,0 +1,36 @@
+---
+interface Props {
+  /**
+   * trainLine is the Tailwind/CSS classes for the train-line symbol in the logo.
+   *
+   * Example with gradients by Gemini Overview:
+   * ```js
+   * "bg-gradient-to-r from-blue-500 to-purple-600"
+   * ```
+   *
+   * @default SYDNEY_TRAINS_T9_TAILWIND
+   */
+  trainLine?: string
+}
+
+
+let { trainLine } = Astro.props;
+trainLine ??= SYDNEY_TRAINS_T9_TAILWIND
+
+export const SYDNEY_TRAINS_T9_TAILWIND = "bg-[#D72F36]"
+
+import { SITE_TITLE } from '../../consts';
+---
+
+<div class="flex items-center justify-center" >
+  <div class={`${trainLine} h-16 w-3 flex items-center justify-center`}>
+    <div class="absolute rounded-full bg-white border-black border-4 w-5 aspect-[1/1] -translate-y-1" />
+  </div>
+
+  <div class="ml-2 text-lg" >
+    <h5 class="font-bold" >
+    {SITE_TITLE}
+    </h5>
+  </div>
+</div>
+
