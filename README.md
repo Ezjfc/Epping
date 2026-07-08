@@ -1,6 +1,22 @@
 # Dev Notes
 
-### Font
+## Env
+
+This project uses Nix Flake for environment and toolkit management.
+
+The Nixpkgs version is pinned to 26.05, the core packages include:
+- NodeJS 24.16.0
+
+After installing Nix, you may enter specific environments with the following commands:
+- `nix develop .#core`: NodeJS
+- `nix develop .#nvim`: all servers should be pre-enabled
+  - typescript-language-server 5.3.0
+  - tailwindcss-language-server 0.14.29
+  - nil 2025-06-13
+
+Direnv: TODO
+
+## Font
 
 Sydney Train uses the New Frank premium font which requires an A*obe subscription. Claude Sonnet
 found me this Libre Franklin on Google Fonts which seems to be free for use.
