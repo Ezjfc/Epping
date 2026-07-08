@@ -21,6 +21,13 @@ Direnv: TODO
 Sydney Train uses the New Frank premium font which requires an A*obe subscription. Claude Sonnet
 found me this Libre Franklin on Google Fonts which seems to be free for use.
 
+## Neovim
+
+Tree-sitter setup:
+```
+:TSInstall astro typescript tsx javascript css html
+```
+
 # Astro Starter Kit: Blog
 
 ```sh
