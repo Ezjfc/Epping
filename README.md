@@ -1,9 +1,37 @@
 # Dev Notes
 
-### Font
+## Env
+
+This project uses Nix Flake for environment and toolkit management.
+
+The Nixpkgs version is pinned to 26.05, the core packages include:
+- NodeJS 24.16.0
+- Typescript 5.9.3
+
+Recommended language servers:
+- typescript-language-server 5.3.0
+- astro-language-server 2.16.7
+- tailwindcss-language-server 0.14.29
+- nil 2025-06-13
+
+
+After installing Nix, you may enter specific environments with the following commands:
+- `nix develop .#core`: NodeJS
+- `nix develop .#nvim`: core + automatically configure all recommended language servers.
+
+Direnv: TODO
+
+## Font
 
 Sydney Train uses the New Frank premium font which requires an A*obe subscription. Claude Sonnet
 found me this Libre Franklin on Google Fonts which seems to be free for use.
+
+## Neovim
+
+Tree-sitter setup:
+```
+:TSInstall astro typescript tsx javascript css html
+```
 
 # Astro Starter Kit: Blog
 
