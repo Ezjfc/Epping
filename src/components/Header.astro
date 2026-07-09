@@ -1,13 +1,14 @@
 ---
 import Logo from "./header/Logo.astro";
-import HoverStationSign from "./header/HoverStationSign.astro";
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from "../consts";
+
+const HEADER_HEIGHT = "3em"
 ---
 
 <header>
   <nav>
-    <a href="/"><Logo><HoverStationSign>{SITE_TITLE}</HoverStationSign></Logo></a>
+    <a href="/"><Logo height={HEADER_HEIGHT} >{SITE_TITLE}</Logo></a>
     <div class="internal-links">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
@@ -51,15 +52,6 @@ import { SITE_TITLE } from "../consts";
     background: white;
     box-shadow: 0 2px 8px rgba(var(--black), 5%);
   }
-  /* h2 { */
-  /*  margin: 0; */
-  /*  font-size: 1em; */
-  /* } */
-
-  /* h2 a, */
-  /* h2 a.active { */
-  /*  text-decoration: none; */
-  /* } */
   nav {
     display: flex;
     align-items: center;
@@ -68,7 +60,7 @@ import { SITE_TITLE } from "../consts";
   nav a {
     /* padding: 1em 0.5em; */
     color: var(--black);
-    /* border-bottom: 4px solid transparent; */
+    border-bottom: 4px solid transparent;
     text-decoration: none;
   }
   nav a.active {

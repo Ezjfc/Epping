@@ -1,0 +1,22 @@
+---
+
+import { type Props as LogoProps, defaults as logoDefaults } from "./Logo.astro";
+
+export type Props = LogoProps
+
+export const defaults = logoDefaults
+
+const { trainLine, trainLineWidth, stationCircle } = { ...defaults, ...Astro.props };
+
+---
+
+<style define:vars={{ "train-line-width": trainLineWidth }} >
+  .train-line {
+    border-bottom-width: var(--train-line-width);
+  }
+</style>
+
+<div class={`train-line ${trainLine} w-full flex items-center justify-center space-x-8 internal-links`}>
+  <slot />
+</div>
+
