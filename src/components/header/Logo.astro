@@ -2,7 +2,7 @@
 
 export const SYDNEY_TRAINS_T9_TAILWIND = "border-[#D72F36]"
 
-interface Props {
+export interface Props {
   /**
    * trainLine is the Tailwind/CSS classes for the train-line symbol in the logo.
    *
@@ -24,7 +24,7 @@ interface Props {
   stationCircle?: string
 }
 
-const defaults: Required<Props> = {
+export const defaults: Required<Props> = {
   trainLine: SYDNEY_TRAINS_T9_TAILWIND,
   trainLineWidth: 12,
   stationCircle: "border-black",
@@ -32,19 +32,16 @@ const defaults: Required<Props> = {
 
 const { trainLine, trainLineWidth, stationCircle } = { ...defaults, ...Astro.props };
 
-import { SITE_TITLE } from '../../consts';
-
 ---
 <div class={`${trainLine} border-l-${trainLineWidth} border-b-${trainLineWidth} h-20 rounded-bl-4xl flex items-center justify-start`}>
   <div class={`
-    absolute
-    rounded-full bg-white ${stationCircle} border-4 w-5 aspect-square
+    absolute rounded-full bg-white ${stationCircle} border-4 w-5 aspect-square
     -translate-x-[calc(50%+6px)] -translate-y-1
   `} />
 
   <div class="ml-2" >
     <h5 class="font-bold" >
-    {SITE_TITLE}
+      <slot />
     </h5>
   </div>
 </div>

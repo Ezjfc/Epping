@@ -1,11 +1,13 @@
 ---
 import Logo from "./header/Logo.astro";
+import HoverStationSign from "./header/HoverStationSign.astro";
 import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from "../consts";
 ---
 
 <header>
 	<nav>
-    <a href="/"><Logo /></a>
+    <a href="/"><Logo><HoverStationSign>{SITE_TITLE}</HoverStationSign></Logo></a>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>

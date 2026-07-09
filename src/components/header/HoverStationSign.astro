@@ -1,0 +1,28 @@
+---
+export const SYDNEY_TRAINS_STATION_SIGN = ""
+
+// Reference: https://buildingbeautifully.com.au/cdn/shop/files/SignsPreviewPic.jpg?v=1712870263&width=1946
+
+export interface Props {
+  /**
+   * stationSign is the Tailwind/CSS classes to be transitioned to on hover.
+   */
+  stationSign?: string
+}
+
+export const defaults: Required<Props> = {
+}
+
+const { stationSign } = { ...Astro.props, ...defaults }
+
+// Note: I tried animating the transition for text colour but it seems to lag the muffin out.
+---
+
+<span class={`
+  bg-linear-to-r from-[#EB5B21] to-[#EB5B21]  bg-[length:0%_100%] bg-left-bottom bg-no-repeat
+  transition-[background-size] duration-500 hover:bg-[length:100%_100%] cursor-pointer
+  hover:text-white
+  `}>
+  <slot />
+</span>
+
