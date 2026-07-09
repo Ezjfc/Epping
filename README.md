@@ -4,7 +4,7 @@
 
 This project uses Nix Flake for environment and toolkit management.
 
-The Nixpkgs version is pinned to 26.05, the core packages include:
+The Nixpkgs version is currently 26.05, the core packages include:
 - NodeJS 24.16.0
 - Typescript 5.9.3
 
@@ -16,7 +16,7 @@ Recommended language servers:
 
 
 After installing Nix, you may enter specific environments with the following commands:
-- `nix develop .#core`: NodeJS
+- `nix develop .#core`: all core packages.
 - `nix develop .#nvim`: core + automatically configure all recommended language servers.
 
 Direnv: TODO
