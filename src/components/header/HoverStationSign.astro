@@ -1,28 +1,35 @@
 ---
-export const SYDNEY_TRAINS_STATION_SIGN = ""
+// References:
+// - https://buildingbeautifully.com.au/cdn/shop/files/SignsPreviewPic.jpg?v=1712870263&width=1946
+//
+// Note: I tried animating the transition for text colour but it seems to lag the muffin out.
 
-// Reference: https://buildingbeautifully.com.au/cdn/shop/files/SignsPreviewPic.jpg?v=1712870263&width=1946
+export const SYDNEY_TRAINS_STATION_SIGN_ANIMATED_BG = `
+  bg-linear-to-r from-[#EB5B21] to-[#EB5B21] bg-size-[0%_100%] bg-bottom-left bg-no-repeat
+  transition-[background-size] duration-500 hover:bg-size-[100%_100%] hover:text-white
+  group-hover:bg-size-[100%_100%] group-hover:text-white
+`
+export const SYDNEY_TRAINS_STATION_SIGN = `
+  hover:bg-[#EB5B21] hover:text-white group-hover:bg-[#EB5B21] group-hover:text-white
+`
 
 export interface Props {
   /**
-   * stationSign is the Tailwind/CSS classes to be transitioned to on hover.
+   * stationSign is the Tailwind/CSS classes for the station sign.
+   * @default SYDNEY_TRAINS_STATION_SIGN
    */
   stationSign?: string
 }
 
 export const defaults: Required<Props> = {
+  stationSign: SYDNEY_TRAINS_STATION_SIGN
 }
 
 const { stationSign } = { ...Astro.props, ...defaults }
 
-// Note: I tried animating the transition for text colour but it seems to lag the muffin out.
 ---
 
-<span class={`
-  bg-linear-to-r from-[#EB5B21] to-[#EB5B21]  bg-[length:0%_100%] bg-left-bottom bg-no-repeat
-  transition-[background-size] duration-500 hover:bg-[length:100%_100%] cursor-pointer
-  hover:text-white
-  `}>
+<span class={`station-sign ${stationSign} px-2`}>
   <slot />
 </span>
 
