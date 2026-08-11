@@ -16,7 +16,7 @@ local tsdk = env.TYPESCRIPT .. "/lib/node_modules/typescript/lib"
 -- deps are missing), so it has to come from the project's own node_modules.
 local tsPluginLocation = vim.fs.joinpath(vim.fn.getcwd(), "node_modules/@astrojs/ts-plugin")
 if not vim.uv.fs_stat(tsPluginLocation) then
-  error("[neovim/lsps.lua] astrojs plugin for typescript-language-server required, run `npm i`")
+  error("[neovim/lsps.lua] astrojs plugin for typescript-language-server required, run `npm i -D`")
 end
 vim.lsp.config("tl_ls", {
   filetypes = {
