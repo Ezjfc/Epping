@@ -24,7 +24,7 @@
       typescript
     ];
     lsps = with pkgs; {
-      tl_ls = typescript-language-server;
+      ts_ls = typescript-language-server;
       astro = astro-language-server;
       tailwindcss = tailwindcss-language-server;
       nil = nil;
