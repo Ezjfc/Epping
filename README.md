@@ -33,6 +33,10 @@ Tree-sitter setup:
 :TSInstall astro typescript tsx javascript css html
 ```
 
+## References
+
+- https://transportnsw.info/sydney-trains-network-map
+
 # Astro Starter Kit: Blog
 
 ```sh
