@@ -3,21 +3,22 @@ import Logo from "./header/Logo.astro";
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from "../consts";
 import TrainLine from "./railmap/TrainLine.astro";
-import { SYDNEY_TRAINS_T9_TAILWIND } from "./railmap/TrainLine.astro";
 ---
 
 <header>
   <nav>
     <Logo><a href="/">{SITE_TITLE}</a></Logo>
-    <TrainLine class={"row-start-1 col-start-2 " + SYDNEY_TRAINS_T9_TAILWIND} />
+    <TrainLine class="border-(--sydney-trains-t9)" />
     <div class="internal-links">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
-    <TrainLine class="row-start-1 col-start-3 [border-image:linear-gradient(to_right,#D72F38,#83807E,transparent)_1]"/>
+    <TrainLine class={`
+      [border-image:linear-gradient(to_right,var(--sydney-trains-t9),var(--sydney-trains-continue),transparent)_1]
+    `}/>
     <div class="social-links">
-      <label class="text-sm col-start-1 col-end-20">Service continues to</label>
+      <label class="text-base flex items-end">Service continues to</label>
       <a href="https://m.webtoo.ls/@astro" target="_blank">
         <span class="sr-only">Follow Astro on Mastodon</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -57,14 +58,12 @@ import { SYDNEY_TRAINS_T9_TAILWIND } from "./railmap/TrainLine.astro";
   }
   nav {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
+    grid-template: auto 1fr auto / auto 1fr auto;
+    align-items: end;
     border-bottom: 4px solid transparent;
   }
   nav a {
-    /* padding: 1em 0.5em; */
     color: var(--black);
-    /* border-bottom: 4px solid transparent; */
     text-decoration: none;
   }
   nav a.active {
@@ -72,7 +71,13 @@ import { SYDNEY_TRAINS_T9_TAILWIND } from "./railmap/TrainLine.astro";
     border-bottom-color: var(--accent);
   }
   .internal-links {
+    display: flex;
+    justify-self: center;
     grid-area: 1/2;
+  }
+  .internal-links a {
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .social-links {
     display: flex;
@@ -81,8 +86,8 @@ import { SYDNEY_TRAINS_T9_TAILWIND } from "./railmap/TrainLine.astro";
   .social-links a {
     background-color: #535051;
     border-radius: 5px;
-    border-color: white;
-    border: 3px solid;
+    /* border-color: white; */
+    /* border: 3px solid; */
     color: white;
     padding: 5px;
     margin: 3px;

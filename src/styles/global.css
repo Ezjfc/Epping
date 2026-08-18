@@ -7,6 +7,9 @@
 @import "tailwindcss";
 
 :root {
+  --sydney-trains-t9: #D72F36;
+  --sydney-trains-continue: #83807E;
+
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;

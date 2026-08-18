@@ -1,36 +1,25 @@
 ---
 import type BaseProps from '../../utils/Props';
 
-export const SYDNEY_TRAINS_T9_TAILWIND = "border-[#D72F36]"
-export const SYDNEY_TRAINS_T9_HEX = "#D72F36"
-
 export interface Props extends BaseProps {
   /**
-   * trainLine is the Tailwind/CSS classes for the train-line symbol in the logo.
-   *
-   * Please set border colour instead of background colour to keep navigation bar functional.
-   *
-   * @default SYDNEY_TRAINS_T9_TAILWIND
-   */
-  class?: string
-  /**
-   * trainLineWidth controls how thick is the train-line symbol in the logo.
+   * width controls how thick is the train-line.
    * @default "10px"
    */
-  trainLineWidth?: string
+  width?: string
 }
 
 export const defaults: Required<Props> = {
-  class: SYDNEY_TRAINS_T9_TAILWIND,
-  trainLineWidth: "10px",
+  class: "border-(--sydney-trains-t9)",
+  width: "10px",
 }
 
-const { class: c, trainLineWidth, } = { ...defaults, ...Astro.props };
+const { class: c, width, } = { ...defaults, ...Astro.props };
 
 ---
-<div class={`self ${c} grow self-stretch`} />
+<div class={`self ${c}`} />
 
-<style define:vars={{ "train-line-width": trainLineWidth }} >
+<style define:vars={{ "train-line-width": width }} >
   .self {
     border-bottom-width: var(--train-line-width);
   }
