@@ -1,7 +1,7 @@
 ---
-import type BaseProps from '../../utils/Props';
+import { type CommonProps, type Default } from '../../utils/Props';
 
-export interface Props extends BaseProps {
+export interface Props extends CommonProps {
   /**
    * width controls how thick is the train-line.
    * @default "10px"
@@ -9,13 +9,12 @@ export interface Props extends BaseProps {
   width?: string
 }
 
-export const defaults: Required<Props> = {
+export const defaults: Default<Props> = {
   class: "border-(--sydney-trains-t9)",
   width: "10px",
 }
 
-const { class: c, width, } = { ...defaults, ...Astro.props };
-
+const { class: c, width } = { ...defaults, ...Astro.props };
 ---
 <div class={`self ${c}`} />
 

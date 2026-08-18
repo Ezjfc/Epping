@@ -1,4 +1,4 @@
-export default interface BaseProps {
+export interface CommonProps {
   /**
    * class contains the Tailwind classes to apply on the outermost element.
    *
@@ -7,3 +7,13 @@ export default interface BaseProps {
    */
   class?: string
 }
+
+// PickOptional is written Google AI Overview:
+type PickOptional<T> = Pick<
+  T,
+  {
+    [K in keyof T]-?: {} extends Pick<T, K> ? K : never;
+  }[keyof T]
+>;
+
+export type Default<T> = Required<PickOptional<T>>

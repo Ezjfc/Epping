@@ -1,0 +1,48 @@
+---
+import { type CommonProps, type Default } from '../../utils/Props';
+import { defaults as lineDefaults, type Props as TrainLineProps } from './TrainLine.astro';
+
+export type Direction = "x" | "y"
+
+export interface AlignmentProps {
+  /**
+   * trainLineWidth is needed to align the station circle with an underlying train line.
+   */
+  trainLineWidth: string
+  /**
+   * alignDirection is needed to align the station circle with an underlying train line.
+   */
+  alignDirection: Direction
+}
+
+export interface Props extends CommonProps, AlignmentProps {
+}
+
+export const defaults: Default<Props> = {
+  class: "border-(--sydney-trains-t9) border-4 w-5",
+}
+
+export function alignByTrainLine(lineProps: TrainLineProps) : AlignmentProps {
+  const linePropsAll: Required<TrainLineProps> = { ...lineProps, ...lineDefaults }
+  return { trainLineWidth: linePropsAll.width, alignDirection: "y" } // TODO: align direction
+}
+
+const { class: c, trainLineWidth, alignDirection } = { ...defaults, ...Astro.props };
+const alignX = alignDirection === "x" ? 1 : 0
+const alignY = alignDirection === "y" ? 1 : 0
+
+---
+<div class={`
+  self ${c} absolute rounded-full bg-white aspect-square
+`} />
+
+<style define:vars={{ "train-line-width": trainLineWidth, "align-x": alignX, "align-y": alignY }} >
+  .self {
+    --translation: calc(-50% + var(--train-line-width) / 2);
+    transform: translate(
+      calc(var(--align-x) * var(--translation)),
+      calc(var(--align-y) * var(--translation))
+    );
+  }
+</style>
+

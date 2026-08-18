@@ -2,7 +2,10 @@
 import Logo from "./header/Logo.astro";
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from "../consts";
-import TrainLine from "./railmap/TrainLine.astro";
+import TrainLine, { defaults as lineDefaults } from "./railmap/TrainLine.astro";
+import StationCircle, { alignByTrainLine } from "./railmap/StationCircle.astro";
+
+const alignCircle = alignByTrainLine(lineDefaults)
 ---
 
 <header>
@@ -10,9 +13,9 @@ import TrainLine from "./railmap/TrainLine.astro";
     <Logo><a href="/">{SITE_TITLE}</a></Logo>
     <TrainLine class="border-(--sydney-trains-t9)" />
     <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/">Home<StationCircle {...alignCircle}/></HeaderLink>
+      <HeaderLink href="/blog">Blog<StationCircle {...alignCircle}/></HeaderLink>
+      <HeaderLink href="/about">About<StationCircle {...alignCircle}/></HeaderLink>
     </div>
     <TrainLine class={`
       [border-image:linear-gradient(to_right,var(--sydney-trains-t9),var(--sydney-trains-continue),transparent)_1]
@@ -89,6 +92,7 @@ import TrainLine from "./railmap/TrainLine.astro";
     /* border-color: white; */
     /* border: 3px solid; */
     color: white;
+    box-sizing: border-box;
     padding: 5px;
     margin: 3px;
   }
