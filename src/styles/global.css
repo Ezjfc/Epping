@@ -21,8 +21,12 @@
   --sydney-trains-water: #D4EBF6;
   --sydney-trains-conversion: #EF59A1;
   --sydney-trains-construction: #9B9A9B;
-  --sydney-trains-continue: #83807E;
   --sydney-trains-legend: #535051;
+
+  /** These three are temporary, subject to be replaced with better alternatives: */
+  --sydney-trains-city: #DBDAD2;
+  --sydney-trains-continue: #83807E;
+  --sydney-trains-interchange: #A49E95;
 
   --intercity-trains-bmt: var(--sydney-trains-t1);
   --intercity-trains-ccn: var(--sydney-trains-t9);
@@ -146,7 +150,7 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: var(--sydney-trains-water);
+	background-color: var(--sydney-trains-city);
 	border-radius: 2px;
 }
 pre {
@@ -191,4 +195,13 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/*
+ * Reference: https://github.com/cosZone/astro-koharu/blob/c48aa2c9f38af071d5fd24c3dce70ed9106f3e17/src/styles/global/reset.css#L147
+ **/
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
 }
