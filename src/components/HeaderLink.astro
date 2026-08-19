@@ -1,25 +1,42 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import type { AlignmentProps as CircleAlignmentProps } from './railmap/StationCircle.astro';
+import StationCircle from './railmap/StationCircle.astro';
 
-interface Props extends HTMLAttributes<'a'> {
+interface Props extends HTMLAttributes<'a'>, CircleAlignmentProps {
+  /**
+   * label is the text to display.
+   */
+  label: string
 }
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, label, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-  <slot />
+<a href={href} data-text={label} class:list={[className, { active: isActive }]} {...props}>
+  {label}<StationCircle {...props} />
 </a>
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  a.active {
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
+  a::after, a.active::after {
+    content: attr(data-text);
+    display: block;
+    font-weight: bolder;
+    text-decoration: underline;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+  }
 </style>
