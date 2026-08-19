@@ -3,7 +3,8 @@ import Logo from "./header/Logo.astro";
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from "../consts";
 import TrainLine, { defaults as lineDefaults } from "./railmap/TrainLine.astro";
-import { alignByTrainLine } from "./railmap/StationCircle.astro";
+import StationCircle, { alignByTrainLine } from "./railmap/StationCircle.astro";
+import Dropdown from "./header/Dropdown";
 
 const alignCircle = alignByTrainLine(lineDefaults)
 ---
@@ -12,11 +13,11 @@ const alignCircle = alignByTrainLine(lineDefaults)
   <nav>
     <Logo><a href="/">{SITE_TITLE}</a></Logo>
     <TrainLine />
-    <div class="internal-links">
+    <div class="internal-links [&_:is(a,button)]:px-[1em]">
       <HeaderLink href="/" label="Central" {...alignCircle} />
       <HeaderLink href="/blog" label="Blog" {...alignCircle} />
       <HeaderLink href="/about" label="About" {...alignCircle} />
-      <HeaderLink href="/test" label="Dropdown Test" {...alignCircle} />
+      <Dropdown client:visible>Dropdown test<StationCircle {...alignCircle} /></Dropdown>
     </div>
     <TrainLine class={`
       [border-image:linear-gradient(to_right,var(--colour),var(--sydney-trains-continue),transparent)_1]
@@ -78,9 +79,6 @@ const alignCircle = alignByTrainLine(lineDefaults)
     display: flex;
     justify-self: center;
     grid-area: 1/2;
-  }
-  .internal-links a {
-    padding: 0em 1em;
   }
   .social-links {
     display: flex;
