@@ -16,33 +16,52 @@ export interface AlignmentProps {
 }
 
 export interface Props extends CommonProps, AlignmentProps {
+  /**
+   * colourClass contains class names that controls the colour of the component.
+   * @default "border-(--colour)"
+   */
+  colourClass?: string
+  /**
+   * colour defines --colour the CSS variable for the component.
+   * @default "var(--sydney-trains-t9)"
+   */
+  colour?: string
+  /**
+   * sizeClass contains class names that controls the size of the component.
+   * @default "border-4 w-5"
+   */
+  sizeClass?: string
 }
 
 export const defaults: Default<Props> = {
-  class: "border-(--sydney-trains-t9) border-4 w-5",
+  colourClass: "border-(--colour)",
+  colour: "var(--sydney-trains-t9)",
+  sizeClass: "border-4 w-5",
 }
 
 export function alignByTrainLine(lineProps: TrainLineProps) : AlignmentProps {
-  const linePropsAll: Required<TrainLineProps> = { ...lineProps, ...lineDefaults }
+  const linePropsAll: Required<TrainLineProps> = { class: "", ...lineDefaults, ...lineProps }
   return { trainLineWidth: linePropsAll.width, alignDirection: "y" } // TODO: align direction
 }
 
-const { class: c, trainLineWidth, alignDirection } = { ...defaults, ...Astro.props };
+const { class: c, colourClass, colour, sizeClass, trainLineWidth, alignDirection } = { ...defaults, ...Astro.props };
 const alignX = alignDirection === "x" ? 1 : 0
 const alignY = alignDirection === "y" ? 1 : 0
 
 ---
-<div class={`
-  self ${c} absolute rounded-full bg-white aspect-square
-`} />
+<div class:list={[`
+     self ${c} ${colourClass} ${sizeClass} absolute rounded-full bg-white aspect-square
+  `, { "align-x": alignX, "align-y": alignY }]} />
 
-<style define:vars={{ "train-line-width": trainLineWidth, "align-x": alignX, "align-y": alignY }} >
+<style define:vars={{ "train-line-width": trainLineWidth, "colour": colour }} >
   .self {
     --translation: calc(-50% + var(--train-line-width) / 2);
-    transform: translate(
-      calc(var(--align-x) * var(--translation)),
-      calc(var(--align-y) * var(--translation))
-    );
+  }
+  .align-x {
+    transform: translateX(var(--translation));
+  }
+  .align-y {
+    transform: translateY(var(--translation));
   }
 </style>
 

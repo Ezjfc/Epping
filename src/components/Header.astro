@@ -11,7 +11,7 @@ const alignCircle = alignByTrainLine(lineDefaults)
 <header>
   <nav>
     <Logo><a href="/">{SITE_TITLE}</a></Logo>
-    <TrainLine class="border-(--sydney-trains-t9)" />
+    <TrainLine />
     <div class="internal-links">
       <HeaderLink href="/" label="Central" {...alignCircle} />
       <HeaderLink href="/blog" label="Blog" {...alignCircle} />
@@ -19,7 +19,7 @@ const alignCircle = alignByTrainLine(lineDefaults)
       <HeaderLink href="/test" label="Dropdown Test" {...alignCircle} />
     </div>
     <TrainLine class={`
-      [border-image:linear-gradient(to_right,var(--sydney-trains-t9),var(--sydney-trains-continue),transparent)_1]
+      [border-image:linear-gradient(to_right,var(--colour),var(--sydney-trains-continue),transparent)_1]
     `}/>
     <div class="social-links">
       <label class="text-base flex items-end">Service continues to</label>

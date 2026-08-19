@@ -3,6 +3,16 @@ import { type CommonProps, type Default } from '../../utils/Props';
 
 export interface Props extends CommonProps {
   /**
+   * colourClass contains class names that controls the colour of the component.
+   * @default "border-(--colour)"
+   */
+  colourClass?: string
+  /**
+   * colour defines --colour the CSS variable for the component.
+   * @default "var(--sydney-trains-t9)"
+   */
+  colour?: string
+  /**
    * width controls how thick is the train-line.
    * @default "10px"
    */
@@ -10,15 +20,16 @@ export interface Props extends CommonProps {
 }
 
 export const defaults: Default<Props> = {
-  class: "border-(--sydney-trains-t9)",
+  colourClass: "border-(--colour)",
+  colour: "var(--sydney-trains-t9)",
   width: "10px",
 }
 
-const { class: c, width } = { ...defaults, ...Astro.props };
+const { class: c, colourClass, colour, width } = { ...defaults, ...Astro.props };
 ---
-<div class={`self ${c}`} />
+<div class={`self ${c} ${colourClass}`} />
 
-<style define:vars={{ "train-line-width": width }} >
+<style define:vars={{ "train-line-width": width, "colour": colour }} >
   .self {
     border-bottom-width: var(--train-line-width);
   }

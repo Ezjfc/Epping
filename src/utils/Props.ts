@@ -1,9 +1,10 @@
 export interface CommonProps {
   /**
-   * class contains the Tailwind classes to apply on the outermost element.
+   * class contains the Tailwind or global class names to apply on the outermost element.
    *
-   * Important: this is limited to Tailwind, excluding CSS classes as Astro creates strict style
-   *            scopes for separate components.
+   * Important: this is limited to Tailwind or global class names as Astro creates strict style
+   *            scopes for separate components os children would not inherit styles from their
+   *            parents.
    */
   class?: string
 }
@@ -16,4 +17,4 @@ type PickOptional<T> = Pick<
   }[keyof T]
 >;
 
-export type Default<T> = Required<PickOptional<T>>
+export type Default<T> = Required<Omit<PickOptional<T>, "class">>
