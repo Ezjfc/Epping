@@ -4,22 +4,27 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from "../consts";
 import TrainLine, { defaults as lineDefaults } from "./railmap/TrainLine.astro";
 import StationCircle, { alignByTrainLine } from "./railmap/StationCircle.astro";
-import Dropdown from "./header/Dropdown";
+import DropdownTrigger from "./header/DropdownTrigger";
+import Dropdown from "./header/Dropdown.astro";
 
-const alignCircle = alignByTrainLine(lineDefaults)
+const lineProps = { ...lineDefaults, bottom: true }
+const alignCircle = alignByTrainLine(lineProps)
 ---
 
 <header>
   <nav>
     <Logo><a href="/">{SITE_TITLE}</a></Logo>
-    <TrainLine />
-    <div class="internal-links [&_:is(a,button)]:px-[1em]">
+    <TrainLine bottom />
+    <div class="internal-links [&_:is(a,button)]:mx-[1em]">
       <HeaderLink href="/" label="Central" {...alignCircle} />
       <HeaderLink href="/blog" label="Blog" {...alignCircle} />
       <HeaderLink href="/about" label="About" {...alignCircle} />
-      <Dropdown client:visible>Dropdown test<StationCircle {...alignCircle} /></Dropdown>
+      <DropdownTrigger client:visible>
+        <div slot="summary">Dropdown test<StationCircle {...alignCircle} /></div>
+        <Dropdown slot="menu" />
+      </DropdownTrigger>
     </div>
-    <TrainLine class={`
+    <TrainLine bottom class={`
       [border-image:linear-gradient(to_right,var(--colour),var(--sydney-trains-continue),transparent)_1]
     `}/>
     <div class="social-links">
