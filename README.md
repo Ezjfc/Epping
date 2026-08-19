@@ -41,6 +41,13 @@ Tree-sitter setup:
 - https://transportnsw.info/sydney-lightrail-network-map
 - https://transportnsw.info/intercity-trains-network-map
 
+## Misc
+
+<details>
+  <summary><h3>Click here for AI slop</h3></summary>
+  <img src="https://cdn.discordapp.com/attachments/1287169290922889327/1539758349594132600/IMG_3917.png?ex=6a877b35&is=6a8629b5&hm=cb4a64475e9a236d9612a0403938d1a8e1432d31f6f98ca9dfe543f0a842d604&"></img>
+</details>
+
 # Astro Starter Kit: Blog
 
 ```sh
