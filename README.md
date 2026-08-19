@@ -36,6 +36,10 @@ Tree-sitter setup:
 ## References
 
 - https://transportnsw.info/sydney-trains-network-map
+- https://transportnsw.info/sydney-ferries-network-map
+- https://transportnsw.info/regional-network-map
+- https://transportnsw.info/sydney-lightrail-network-map
+- https://transportnsw.info/intercity-trains-network-map
 
 # Astro Starter Kit: Blog
 

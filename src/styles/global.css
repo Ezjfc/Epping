@@ -7,10 +7,57 @@
 @import "tailwindcss";
 
 :root {
-  --sydney-trains-t9: #D72F36;
+  --sydney-trains-t1: #F89C1C;
+  --sydney-trains-t2: #0097CD;
+  --sydney-trains-t3: #F36E21;
+  --sydney-trains-t4: #015AA5;
+  --sydney-trains-t5: #C32190;
+  --sydney-trains-t6: #7C3D1F;
+  --sydney-trains-t7: #6E818E;
+  --sydney-trains-t8: #00964C;
+  --sydney-trains-t9: #D21F2F;
+  --sydney-trains-m1: #00959A;
+  --sydney-trains-land: #EBECE6;
+  --sydney-trains-water: #D4EBF6;
+  --sydney-trains-conversion: #EF59A1;
+  --sydney-trains-construction: #9B9A9B;
   --sydney-trains-continue: #83807E;
+  --sydney-trains-legend: #535051;
 
-	--accent: #2337ff;
+  --intercity-trains-bmt: var(--sydney-trains-t1);
+  --intercity-trains-ccn: var(--sydney-trains-t9);
+  --intercity-trains-sco: var(--sydney-trains-t4);
+  --intercity-trains-shl: var(--sydney-trains-t8);
+  --intercity-trains-hun: #833033;
+
+  --light-rails-l1: #AD1926;
+  --light-rails-l2: #DF1E25;
+  --light-rails-l3: #78103F;
+  --light-rails-l4: var(--tfnsw-light-rail);
+  --light-rails-nc: var(--tfnsw-light-rail);
+
+  --ferries-f1: #00764A;
+  --ferries-f2: #0F4733;
+  --ferries-f3: #618D46;
+  --ferries-f4: #BED630;
+  --ferries-f5: #206141;
+  --ferries-f6: #00AB51;
+  --ferries-f7: #09B188;
+  --ferries-f8: #54622A;
+  --ferries-f9: #60BB46;
+  --ferries-f10: #354D1E;
+
+  --tfnsw-metro: var(--sydney-trains-m1);
+  --tfnsw-train: var(--sydney-trains-t1);
+  --tfnsw-regional-train: #E15F1D;
+  --tfnsw-bus: #009ED7;
+  --tfnsw-light-rail: #E4022D;
+  --tfnsw-coach: #470A68;
+  --tfnsw-school-bus: #9FD7F7;
+  --tfnsw-ferry: #009E4D;
+
+	/* --accent: #2337ff; */
+	--accent: var(--sydney-trains-m1);
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -26,7 +73,8 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	/* background: linear-gradient(var(--gray-gradient)) no-repeat; */
+  background: var(--sydney-trains-land);
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -98,7 +146,7 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+	background-color: var(--sydney-trains-water);
 	border-radius: 2px;
 }
 pre {
