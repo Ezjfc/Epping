@@ -41,7 +41,12 @@ export const defaults: Default<Props> = {
 
 export function alignByTrainLine(lineProps: TrainLineProps) : AlignmentProps {
   const linePropsAll: Required<TrainLineProps> = { class: "", ...lineDefaults, ...lineProps }
-  return { trainLineWidth: linePropsAll.width, alignDirection: "y" } // TODO: align direction
+  const { width, left, right } = linePropsAll
+  return {
+    trainLineWidth: width,
+    // Alignment prioritises the X axis:
+    alignDirection: (left || right) ? "x" : "y" // TODO: translation plus or minus
+  }
 }
 
 const { class: c, colourClass, colour, sizeClass, trainLineWidth, alignDirection } = { ...defaults, ...Astro.props };

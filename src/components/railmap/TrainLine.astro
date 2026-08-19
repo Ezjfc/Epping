@@ -1,7 +1,9 @@
 ---
-import { type CommonProps, type Default } from '../../utils/props';
+import { type CommonProps, type Default, type RequireAtLeastOne } from '../../utils/props';
 
-export interface Props extends CommonProps {
+export type Props = RequireAtLeastOne<BaseProps, "top" | "left" | "right" | "bottom">
+
+export interface BaseProps extends CommonProps {
   /**
    * colourClass contains class names that controls the colour of the component.
    * @default "border-(--colour)"
@@ -17,20 +19,69 @@ export interface Props extends CommonProps {
    * @default "10px"
    */
   width?: string
+
+  /**
+   * top draws or extends the train line horizontally at the top.
+   * @default false
+   */
+  top: boolean
+  /**
+   * left draws or extends the train line verically on the left.
+   * @default false
+   */
+  left: boolean
+  /**
+   * right draws or extends the train line verically on the right.
+   * @default false
+   */
+  right: boolean
+  /**
+   * bottom draws or extends the train line horizontally at the bottom.
+   * @default false
+   */
+  bottom: boolean
 }
 
 export const defaults: Default<Props> = {
   colourClass: "border-(--colour)",
   colour: "var(--sydney-trains-t9)",
   width: "10px",
+  top: false,
+  left: false,
+  right: false,
+  bottom: false,
 }
 
-const { class: c, colourClass, colour, width } = { ...defaults, ...Astro.props };
+const {
+  class: c,
+  colourClass,
+  colour,
+  width,
+
+  top,
+  left,
+  right,
+  bottom,
+} = { ...defaults, ...Astro.props };
 ---
-<div class={`self ${c} ${colourClass}`} />
+<div class:list={[`${c} ${colourClass}`, {
+  top: top,
+  left: left,
+  right: right,
+  bottom: bottom,
+}]} />
 
 <style define:vars={{ "train-line-width": width, "colour": colour }} >
-  .self {
+  .top {
+    border-top-width: var(--train-line-width);
+  }
+  .left {
+    border-left-width: var(--train-line-width);
+  }
+  .right {
+    border-right-width: var(--train-line-width);
+  }
+  .bottom {
     border-bottom-width: var(--train-line-width);
   }
 </style>
