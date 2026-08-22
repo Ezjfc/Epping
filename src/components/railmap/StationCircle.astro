@@ -38,8 +38,9 @@ export interface Props extends CommonProps, AlignmentProps {
 
   /**
    * hover enables hover effects.
+   * @default false
    */
-  hover: boolean
+  hover?: boolean
   /**
    * hover defines --hover-colour the CSS variable for the component and will be used when hover
    *       effects are enabled.
@@ -56,7 +57,8 @@ export const defaults: Default<Props> = {
   `,
   colour: "var(--sydney-trains-t9)",
   sizeClass: "[&>.circle-front]:border-4 [&>.circle-front]:w-5 [&>.interchange-shade]:w-7",
-  hoverColour: "var(--sydney-trains-t1)"
+  hover: false,
+  hoverColour: "var(--sydney-trains-t1)",
 }
 
 export function alignByTrainLine(lineProps: TrainLineProps) : AlignmentProps {

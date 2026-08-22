@@ -1,4 +1,4 @@
-import { safePolygon, useDismiss, useFloating, useFocus, useHover, useInteractions, useRole } from "@floating-ui/react";
+import { safePolygon, size, useFloating, useFocus, useHover, useInteractions, useRole } from "@floating-ui/react";
 import { useState, type PropsWithChildren, type ReactNode } from "react";
 import type { CommonPropsReact } from "../../utils/props";
 
@@ -17,6 +17,15 @@ export default function Dropdown({ className, children, menu }: Props) {
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: "bottom-start",
+    middleware: [
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+          })
+        }
+      })
+    ]
   })
   const hover = useHover(context, { handleClose: safePolygon() }) // TODO: switch to floatingportal and focus manager
   const focus = useFocus(context)

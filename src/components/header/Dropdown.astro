@@ -1,23 +1,20 @@
 ---
 import { getProps, type CommonProps } from '../../utils/props'
 import { type Default } from '../../utils/props'
-import StationCircle, { alignByTrainLine } from '../railmap/StationCircle.astro'
-import TrainLine, { defaults as lineDefaults } from '../railmap/TrainLine.astro'
+import TrainLine from '../railmap/TrainLine.astro'
 
 export interface Props extends CommonProps {
-//TODO: stationCircleRadius??
 }
 
 const defaults: Default<Props> = {
 }
 const { class: c } = getProps(Astro.props, defaults)
 
-const lineProps = { ...lineDefaults, left: true }
-const alignCircle = alignByTrainLine(lineProps)
-
 ---
-<div class={`${c} min-h-50 flex flex-col`}>
-  <!-- <StationCircle colour="var(--sydney-trains-t1)" {...alignCircle} /> -->
-  <TrainLine left class="train-line grow h-full" colour="var(--sydney-trains-t1)" /><!-- m1 requires stripe design try to figure out later on -->
-  hi
+<div class={`${c} grid grid-cols-[max-content_1fr]`}>
+  <TrainLine left class="train-line h-full" colour="var(--sydney-trains-t1)" /><!-- m1 requires stripe design try to figure out later on -->
+  <div class="dropdown-links flex flex-col" >
+    <div class="spacer h-[calc(1em*var(--line-height))]" />
+    <slot/>
+  </div>
 </div>

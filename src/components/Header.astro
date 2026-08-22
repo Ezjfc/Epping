@@ -6,6 +6,7 @@ import TrainLine, { defaults as lineDefaults } from "./railmap/TrainLine.astro";
 import StationCircle, { alignByTrainLine } from "./railmap/StationCircle.astro";
 import DropdownTrigger from "./header/DropdownTrigger";
 import Dropdown from "./header/Dropdown.astro";
+import DropdownLink from "./header/DropdownLink.astro";
 
 const lineProps = { ...lineDefaults, bottom: true }
 const alignCircle = alignByTrainLine(lineProps)
@@ -21,7 +22,9 @@ const alignCircle = alignByTrainLine(lineProps)
       <HeaderLink href="/about" label="About" {...alignCircle} />
       <DropdownTrigger className="group" client:visible>
         Dropdown test<StationCircle hover {...alignCircle} />
-        <Dropdown slot="menu" />
+        <Dropdown slot="menu">
+          <DropdownLink href="" label="hi" {...alignCircle} />
+        </Dropdown>
       </DropdownTrigger>
     </div>
     <TrainLine bottom class={`
