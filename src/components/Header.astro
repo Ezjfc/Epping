@@ -19,8 +19,8 @@ const alignCircle = alignByTrainLine(lineProps)
       <HeaderLink href="/" label="Central" {...alignCircle} />
       <HeaderLink href="/blog" label="Blog" {...alignCircle} />
       <HeaderLink href="/about" label="About" {...alignCircle} />
-      <DropdownTrigger client:visible>
-        <div class="group" >Dropdown test<StationCircle hover {...alignCircle} /></div>
+      <DropdownTrigger className="group" client:visible>
+        Dropdown test<StationCircle hover {...alignCircle} />
         <Dropdown slot="menu" />
       </DropdownTrigger>
     </div>

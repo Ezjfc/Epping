@@ -19,8 +19,9 @@ export interface Props extends CommonProps, AlignmentProps {
   /**
    * colourClass contains class names that controls the colour of the component.
    * @default `
-   *   [&_.circle-front]:border-(--colour) [&_.circle-front]:bg-white
-   *   [&_.circle-front]:group-hover:border-(--hover-colour)
+   *   [&>.circle-front]:border-(--colour) [&>.circle-front]:bg-white
+   *   [&>.circle-front]:group-hover:border-(--hover-colour)
+   *   [&>.circle-front]:group-focus:border-(--hover-colour)
    * `
    */
   colourClass?: string
@@ -31,7 +32,7 @@ export interface Props extends CommonProps, AlignmentProps {
   colour?: string
   /**
    * sizeClass contains class names that controls the size of the component.
-   * @default "[&_.circle-front]:border-4 [&_.circle-front]:w-5 [&_.interchange-shade]:w-7"
+   * @default "[&>.circle-front]:border-4 [&>.circle-front]:w-5 [&>.interchange-shade]:w-7"
    */
   sizeClass?: string
 
@@ -49,11 +50,12 @@ export interface Props extends CommonProps, AlignmentProps {
 
 export const defaults: Default<Props> = {
   colourClass: `
-  [&_.circle-front]:border-(--colour) [&_.circle-front]:bg-white
-  [&_.circle-front]:group-hover:border-(--hover-colour)
+  [&>.circle-front]:border-(--colour) [&>.circle-front]:bg-white
+  [&>.circle-front]:group-hover:border-(--hover-colour)
+  [&>.circle-front]:group-focus:border-(--hover-colour)
   `,
   colour: "var(--sydney-trains-t9)",
-  sizeClass: "[&_.circle-front]:border-4 [&_.circle-front]:w-5 [&_.interchange-shade]:w-7",
+  sizeClass: "[&>.circle-front]:border-4 [&>.circle-front]:w-5 [&>.interchange-shade]:w-7",
   hoverColour: "var(--sydney-trains-t1)"
 }
 
@@ -86,6 +88,7 @@ const alignY = alignDirection === "y" ? 1 : 0
     interchange-shade absolute interchange-shade rounded-full bg-[rgba(0,0,0,0.25)] aspect-square scale-0
     transition-transform duration-100 row-start-1 col-start-1 z-10
     group-hover:scale-100
+    group-focus:scale-100
     `} />}
   <div class="circle-front rounded-full aspect-square transition-colors duration-150 row-start-1 col-start-1 z-20" />
 </div>
