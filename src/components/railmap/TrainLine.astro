@@ -1,5 +1,5 @@
 ---
-import { type CommonProps, type Default, type RequireAtLeastOne } from '../../utils/props';
+import { getProps, type CommonProps, type Default, type RequireAtLeastOne } from '../../utils/props';
 
 export type Props = RequireAtLeastOne<BaseProps, "top" | "left" | "right" | "bottom">
 
@@ -62,7 +62,7 @@ const {
   left,
   right,
   bottom,
-} = { ...defaults, ...Astro.props };
+} = getProps(Astro.props, defaults);
 ---
 <div class:list={[`${c} ${colourClass}`, {
   top: top,
